@@ -93,6 +93,7 @@ var (
 	BlockRequestHandlerFn              = rpc.BlockRequestHandlerFn
 	LatestBlockRequestHandlerFn        = rpc.LatestBlockRequestHandlerFn
 	RegisterRPCRoutes                  = rpc.RegisterRPCRoutes
+	RegisterKeysRPCRoutes              = rpc.RegisterKeysRPCRoutes
 	StatusCommand                      = rpc.StatusCommand
 	NodeInfoRequestHandlerFn           = rpc.NodeInfoRequestHandlerFn
 	NodeSyncingRequestHandlerFn        = rpc.NodeSyncingRequestHandlerFn
