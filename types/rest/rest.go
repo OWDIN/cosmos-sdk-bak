@@ -154,6 +154,25 @@ func WriteErrorResponse(w http.ResponseWriter, status int, err string) {
 	_, _ = w.Write(codec.Cdc.MustMarshalJSON(NewErrorResponse(0, err)))
 }
 
+// SuccessResponse defines the attributes of a JSON error response.
+type SuccessResponse struct {
+	Code   int  `json:"code,omitempty"`
+	Result bool `json:"result"`
+}
+
+// NewSuccessResponse creates a new ErrorResponse instance.
+func NewSuccessResponse(code int, rlt bool) SuccessResponse {
+	return SuccessResponse{Code: code, Result: rlt}
+}
+
+// WriteSuccessResponse prepares and writes a HTTP result
+// given a status code and an error message.
+func WriteSuccessResponse(w http.ResponseWriter, status int, rlt bool) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(status)
+	_, _ = w.Write(codec.Cdc.MustMarshalJSON(NewSuccessResponse(0, rlt)))
+}
+
 // WriteSimulationResponse prepares and writes an HTTP
 // response for transactions simulations.
 func WriteSimulationResponse(w http.ResponseWriter, cdc *codec.Codec, gas uint64) {
